@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Products</title>
+  <style>
+  h1, h2{
+    text-align: center
+  }
+  body{
+    font-family: 'Poppins', sans-serif;
+
+  } 
+  input{
+    display: block;
+    margin 0 auto;
+  }
+
+  #product-image{
+    height: 250px;
+    width: 250px;
+  }
+  #products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  #product{
+    border: solid;
+    border-width: 1px;
+    margin: 10px;
+  }
+  #product-details {
+    text-align: center;
+  }
+  
+  </style>
+</head>
+<body>
+  <h1>CPU CENTRAL</h1>
+  <h2>Products</h2>
+  <div id="products">
+    {% for product in products %}
+    <div id="product">
+      <img id="product-image" src="{{ product['image'] }}" alt="{{ product['name'] }}">
+
+      <div id="product-details">
+        {{product['name']}}
+        <br>
+        {{product['price']}}
+      </div>
+      <form action='/browse/product-page' method="post">
+        <input type="hidden" name="image" value="{{product['image']}}">
+        <input type="hidden" name="name" value="{{product['name']}}">
+        <input type="hidden" name="price" value="{{product['price']}}">
+        <input type="hidden" name="desc" value="{{product['desc']}}">
+        <input type="submit" value="BUY">
+      </form>      
+    </div>
+    {% endfor %}
+  </div>
+  
+</body>
+</html>
