@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Product-Page</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 20px;
+      color: #0073e6;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    #product-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    #product-image {
+      height: 300px;
+      width: 300px;
+      object-fit: contain;
+      margin: 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    p {
+      max-width: 800px;
+      text-align: justify;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 10px;
+    }
+
+    #order-section {
+      text-align: center;
+      border: 1px solid #ccc;
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    #buy-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0073e6;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 115, 230, 0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #buy-button:hover {
+      background-color: #005bb5;
+      box-shadow: 0 8px 20px rgba(0, 91, 181, 0.4);
+    }
+
+    #buy-button:active {
+      background-color: #003f81;
+      box-shadow: 0 4px 12px rgba(0, 63, 129, 0.4);
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>CPU CENTRAL</h1>
+
+  <div id="product-section">
+    <h1>{{product['name']}}</h1>
+    <img id="product-image" src={{product['image']}}>
+    <h2>Description</h2>
+    <p>{{product['desc']}}</p>
+    
+  </div>
+
+  <div id="order-section">
+  <h2>Order</h2>
+    <form action='/browse/productpage/receipt' method="post">
+      
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name">
+        
+    <br>
+        
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email">
+        
+    <br>
+        
+        <label for="address">Address</label>
+        <br>
+        <input type="text" name="address">
+        
+    <br>
+        
+        <label for="card">Card Number</label>
+        <br>
+        <input type="number" name="card">
+    <br>
+
+      <input type="hidden" name="product-name" value="{{product['name']}}">
+      <input type="hidden" name="product-price" value="{{product['price']}}">
+      <br>
+      <input id="buy-button" type="submit" value="Buy">
+      
+    </form>
+  </div>
+  
+</body>
+</html>

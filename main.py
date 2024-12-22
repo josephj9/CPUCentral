@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 PRODUCTS = [
@@ -36,16 +36,29 @@ PRODUCTS = [
 
 ORDERS = []
 
+
+
 @app.route('/')
 def homepage():
   return render_template('homepage.html')
 @app.route('/browse')
 def browse():
     return render_template('browse.html', products=PRODUCTS)
-@app.route('/browse/product-page')
-def product-page():
-    DATA = request.form.to_dict
-    return render_template('product-page.html')
+@app.route('/browse/productpage', methods=['POST'])
+def productpage():
+    DATA = request.form.to_dict()
+    return render_template('productpage.html', product=DATA)
+
+
+@app.route("/browse/productpage/receipt", methods=['POST'])
+def receipt():
+    DATA = request.form.to_dict()
+    ORDERS.append(DATA)
+    return render_template('receipt.html', order=DATA)
+
+@app.route("/orders")
+def orders():
+  return ORDERS
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)

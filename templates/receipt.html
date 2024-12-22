@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Receipt</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 20px;
+      color: #0073e6;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    #mes {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    #receipt {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    #receipt p {
+      font-size: 1.1rem;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    #receipt h2 {
+      margin-bottom: 20px;
+    
+  </style>
+</head>
+<body>
+  <a aref="homepage.html"> <h1>CPU CENTRAL</h1></a>
+<p id="mes">Thanks for the purchase Please review your order details below.</p>
+  <div id="receipt">
+<h2>Receipt</h2>
+
+    <p>Name: {{order['name']}}</p>
+    <p>Email: {{order['email']}}</p>
+    <p>Address: {{order['address']}}</p>
+    <p>Item: {{order['product-name']}}</p>
+    <p>Price: {{order['product-price']}}</p>
+
+
+    
+  </div>
+</body>
+</html>
